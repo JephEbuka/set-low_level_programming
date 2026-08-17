@@ -1,10 +1,16 @@
 #ifndef HASH_TABLES_H
 #define HASH_TABLES_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
+/**
+ * struct hash_node_s - node of a hash table
+ * @key: the key, string
+ * @value: the value corresponding to a key
+ * @next: pointer to the next node of the list
+ */
 typedef struct hash_node_s
 {
 	char *key;
@@ -12,12 +18,25 @@ typedef struct hash_node_s
 	struct hash_node_s *next;
 } hash_node_t;
 
+/**
+ * struct hash_table_s - hash table data structure
+ * @size: size of the array
+ * @array: array of size @size
+ */
 typedef struct hash_table_s
 {
 	unsigned long int size;
 	hash_node_t **array;
 } hash_table_t;
 
+/**
+ * struct shash_node_s - node of a sorted hash table
+ * @key: the key, string
+ * @value: the value corresponding to a key
+ * @next: pointer to the next node of the collision list
+ * @sprev: pointer to the previous node of the sorted linked list
+ * @snext: pointer to the next node of the sorted linked list
+ */
 typedef struct shash_node_s
 {
 	char *key;
@@ -27,6 +46,13 @@ typedef struct shash_node_s
 	struct shash_node_s *snext;
 } shash_node_t;
 
+/**
+ * struct shash_table_s - sorted hash table data structure
+ * @size: size of the array
+ * @array: array of size @size
+ * @shead: pointer to the first element of the sorted linked list
+ * @stail: pointer to the last element of the sorted linked list
+ */
 typedef struct shash_table_s
 {
 	unsigned long int size;
